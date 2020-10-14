@@ -31,13 +31,14 @@ app.use(morgan('dev')); // to see all the request from the database as get, put 
 app.use(bodyParser.json());
 app.use(cors());
 
-//Route
+//import Routes
 
-app.get('/api', (req,res) => {
-    res.json({
-        data:'you hit node ap update'
-    })
-})
+const authRoutes = require('./routes/auth');
+
+
+//Route middlewares
+
+app.use('/api', authRoutes);
 
 
 // Port to work
