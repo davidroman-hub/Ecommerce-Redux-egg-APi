@@ -35,12 +35,11 @@ app.use(cors());
 
 //import Routes
 
-//const authRoutes = require('./routes/auth'); /// not this again
-
+    //const authRoutes = require('./routes/auth'); /// not this again
 
 //Route middlewares
 
-//app.use('/api', authRoutes); // not this again
+    //app.use('/api', authRoutes); // not this again
 
 fs.readdirSync('./routes').map((r) =>
     app.use('/api', require('./routes/' + r)) // dynamic imports from all the routes !!! GREAT!
