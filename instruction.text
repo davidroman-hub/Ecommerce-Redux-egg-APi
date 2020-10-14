@@ -1,0 +1,8 @@
+
+
+remember for the adminFirebase you have to go to firebase 
+
+after you have to go to the console and select your app
+then in settings (tool) you have to go to 'service accounts or cuentas de servicio'
+and finally generate the private key
+
