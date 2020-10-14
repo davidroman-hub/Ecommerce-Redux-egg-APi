@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const fs = require('fs'); //<=== access to the file system
 require('dotenv').config();
+
 
 // Create App
 
@@ -33,12 +35,16 @@ app.use(cors());
 
 //import Routes
 
-const authRoutes = require('./routes/auth');
+//const authRoutes = require('./routes/auth'); /// not this again
 
 
 //Route middlewares
 
-app.use('/api', authRoutes);
+//app.use('/api', authRoutes); // not this again
+
+fs.readdirSync('./routes').map((r) =>
+    app.use('/api', require('./routes/' + r)) // dynamic imports from all the routes !!! GREAT!
+    );
 
 
 // Port to work
