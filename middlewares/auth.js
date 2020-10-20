@@ -1,5 +1,5 @@
 const admin = require('../firebase/index');
-
+const User = require('../models/user');
 // we need to check if the token is valid from firebase
 
 exports.authCheck = async (req, res, next) =>{
@@ -18,3 +18,20 @@ exports.authCheck = async (req, res, next) =>{
         });
     }
 };
+
+// to know if hte user that will do the request is admin!
+
+
+exports.adminCheck = async(req,res,next) => {
+    const { email } = req.user
+    
+    const adminUser = await User.findOne({email: email}).exec()
+
+    if(adminUser.role !== 'admin'){
+        res.status(403).json({
+            err:'Admin Resource. Access denied.'
+        })
+    } else{
+        next();
+    }
+}
