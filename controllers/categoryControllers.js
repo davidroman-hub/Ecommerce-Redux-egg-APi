@@ -29,6 +29,7 @@ exports.updateCategory = async (req,res) => {
     const { name } = req.body;
     try {
         const updated = await Category.findOneAndUpdate(
+            
             {slug:req.params.slug}, 
             {name:name, slug: slugify(name)},
             {new:true}
