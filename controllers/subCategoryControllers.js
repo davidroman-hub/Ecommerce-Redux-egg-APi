@@ -27,12 +27,12 @@ exports.listSubCategories = async (req,res) => {
 }
 
 exports.updateSubCategory = async (req,res) => {
-    const { name } = req.body;
+    const { name, parentCategory } = req.body;
     try {
         const updated = await SubCategory.findOneAndUpdate(
             
             {slug:req.params.slug}, 
-            {name:name, slug: slugify(name)},
+            {name, parentCategory,slug: slugify(name)},
             {new:true}
             );
             res.json(updated)
