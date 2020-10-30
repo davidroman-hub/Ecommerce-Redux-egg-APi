@@ -13,9 +13,10 @@ const {
 
 // import controllers
 const { create,
+        read,
         
     } = require('../controllers/productsControllers');
 
-router.post('/products', authCheck, adminCheck, create);
-
+router.post('/product', authCheck, adminCheck, create);
+router.get('/products', read);
 module.exports = router;
