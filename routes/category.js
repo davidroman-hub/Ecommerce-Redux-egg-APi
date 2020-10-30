@@ -25,6 +25,6 @@ router.get('/categories', listCategories);
 router.get('/category/:slug', readCategory);
 router.put('/category/:slug', authCheck, adminCheck, updateCategory);
 router.delete('/category/:slug', authCheck, adminCheck, removeCategory);
-router.get('/category/subs/:_id', authCheck,adminCheck, getSubs)
+router.get('/category/subs/:_id',  getSubs)
 
 module.exports = router;

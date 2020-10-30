@@ -57,10 +57,10 @@ exports.removeCategory = async (req,res) => {
 // this method is for show subCategory when you chose the Parent category
 // so if we choose asus we want to see the subs categories an with this add the product to this category
 
-exports.getSubs = async (req,res) => {
-        SubCategory.find({parent: req.params._id}).exec((err, subs) =>{
-            if(err) console.log(err);
-            res.json(subs)
-        })
-}
-
+exports.getSubs = (req, res) => {
+    SubCategory.find({ parentCategory: req.params._id }).exec((err, subs) => {
+      if (err) console.log(err);
+      res.json(subs);
+    });
+  };
+  
